@@ -9,7 +9,8 @@ defmodule Cluster.Application do
   def start(type, _args) do
     # List all child processes to be supervised
     children = [
-      Cluster.Supervisor,
+      # Cluster.OneSupervisor,
+      Cluster.DynamicSupervisor,
       # Starts a worker by calling: Cluster.Worker.start_link(arg)
       {Cluster.Server, []},
     ]

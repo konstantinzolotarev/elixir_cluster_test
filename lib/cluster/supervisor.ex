@@ -1,8 +1,10 @@
-defmodule Cluster.Supervisor do
+defmodule Cluster.DynamicSupervisor do
   use DynamicSupervisor
 
+  @name TestSupervisor
+
   def start_link(arg) do
-    DynamicSupervisor.start_link(__MODULE__, arg, name: __MODULE__)
+    DynamicSupervisor.start_link(__MODULE__, arg, name: {:global, __MODULE__})
   end
 
   def init(_arg) do
