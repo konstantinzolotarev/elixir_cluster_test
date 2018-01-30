@@ -12,6 +12,6 @@ defmodule Cluster.DynamicSupervisor do
   end
 
   def start_child do
-    DynamicSupervisor.start_child(__MODULE__, {Cluster.Test, []})
+    DynamicSupervisor.start_child({:global, __MODULE__}, {Cluster.Test, []})
   end
 end
